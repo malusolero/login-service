@@ -1,14 +1,12 @@
 from flask_openapi3 import OpenAPI, Info, Tag
-from flask import redirect, jsonify, request, g
+from flask import redirect, jsonify
 from flask_httpauth import HTTPBasicAuth
-from urllib.parse import unquote
 
 from sqlalchemy.exc import IntegrityError
 
 from model import Session, User
 
-
-from schema import LoginSchema, VerifyLoginSchema, CreateUserResponseSchema, CreateUserRequestSchema, ErrorSchema, HeaderSchema
+from schema import VerifyLoginSchema, CreateUserResponseSchema, CreateUserRequestSchema, ErrorSchema, HeaderSchema
 
 from flask_cors import CORS
 
@@ -49,7 +47,6 @@ def home():
     """ Redirects for /openapi, screen for choosing the documentation.
     """
     return redirect('/openapi')
-
 
 @app.post('/user', tags=[login_tag], responses={"200": CreateUserResponseSchema, "409": ErrorSchema, "400": ErrorSchema})
 def register(form: CreateUserRequestSchema):

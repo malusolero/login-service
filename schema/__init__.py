@@ -1,2 +1,2 @@
-from schema.user import CreateUserRequestSchema, CreateUserResponseSchema, LoginSchema, VerifyLoginSchema, HeaderSchema
+from schema.user import CreateUserRequestSchema, CreateUserResponseSchema, VerifyLoginSchema, HeaderSchema
 from schema.error import ErrorSchema
