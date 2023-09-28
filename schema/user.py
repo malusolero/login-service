@@ -16,15 +16,6 @@ class CreateUserRequestSchema(BaseModel):
     password: str = "mytestpasswrod"
 
 
-class LoginSchema(BaseModel):
-    """
-        Defines Login parameters
-    """
-
-    username: str = "Test use"
-    password_hash: str = "123jahsbdghalkjsdnkasjd"
-
-
 class VerifyLoginSchema(BaseModel):
     """
         Defines parameters for checking if user is with right credentials
