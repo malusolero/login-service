@@ -49,13 +49,12 @@ def home():
     return redirect('/openapi')
 
 @app.post('/user', tags=[login_tag], responses={"200": CreateUserResponseSchema, "409": ErrorSchema, "400": ErrorSchema})
-def register(form: CreateUserRequestSchema):
-
+def register(body: CreateUserRequestSchema):
     """
         Endpoint for creating a user inside database
     """
-    username = form.username 
-    password = form.password
+    username = body.username 
+    password = body.password
 
     try:
         session = Session()
@@ -87,12 +86,12 @@ def register(form: CreateUserRequestSchema):
         return {"mesage": error_msg}, 400
         
 @app.post('/user/login', tags=[login_tag], responses={"200": VerifyLoginSchema, "404": ErrorSchema, "401": ErrorSchema})
-def checkCredentials(form: CreateUserRequestSchema):
+def checkCredentials(body: CreateUserRequestSchema):
     """
         Endpoint for getting a token when receiving valid credentials
     """
-    username = form.username 
-    password = form.password
+    username = body.username 
+    password = body.password
 
     try:
         session = Session()
@@ -124,6 +123,7 @@ def checkAuthenticated(header: HeaderSchema):
         Endpoint for checking authentication state when receiving a token via request headers Authorization
     """
     try:
+        print(header)
 
         token = header.authorization.split()[1]
     except:

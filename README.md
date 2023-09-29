@@ -17,6 +17,16 @@ Este comando instala as dependências/bibliotecas, descritas no arquivo `require
 
 ---
 
+## Antes da execução
+
+Antes de executar o projeto é necessário ter um arquivo `.env` na raiz do projeto com a seguinte estrutura:
+
+```
+SECRET_KEY=QUALQUER-VALOR
+```
+
+Esta chave aleatória e utilizada no script de encriptação da senha, e por motivos de segurança é mantido fora do código base.
+
 ### Executando o servidor
 
 Para executar a API basta executar:
